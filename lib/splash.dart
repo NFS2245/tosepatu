@@ -29,7 +29,7 @@ class _SplashState extends State<Splash> {
           ),
         ),
         SizedBox(
-          height: 30.0,
+          height: 40.0,
         ),
         Text('')
       ],
