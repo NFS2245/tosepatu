@@ -1,4 +1,4 @@
-package com.example.u_tosepatu
+package com.example.tosepatu
 
 import io.flutter.embedding.android.FlutterActivity
 
