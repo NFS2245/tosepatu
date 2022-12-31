@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:get/get.dart';
 import 'package:tosepatu/app/routes/app_pages.dart';
@@ -11,6 +14,8 @@ import '../../../../themes/widgets/text_field/login/email/email_textfields.dart'
 import '../../../../themes/widgets/text_field/login/password/password_textfields.dart';
 import '../../../../themes/widgets/text_field/register/passwordregis/password_regis_textfield.dart';
 import '../../../../themes/widgets/text_field/register/username/username_textfield.dart';
+import '../../../api/api.dart';
+import 'package:http/http.dart' as http;
 import '../../../api/connectapi.dart';
 import '../controllers/register_controller.dart';
 
@@ -30,6 +35,39 @@ class register extends StatefulWidget {
 }
 
 class _registerState extends State<register> {
+  TextEditingController idUserC = TextEditingController();
+  TextEditingController noTelpUserC = TextEditingController();
+  TextEditingController usernameC = TextEditingController();
+  TextEditingController passwordC = TextEditingController();
+  TextEditingController password2C = TextEditingController();
+
+  Future<void> _register() async {
+    Uri url1 = Uri.parse(API.signUp);
+    final responseRegister = await http.post(url1, body: {
+      'no_telp_user': noTelpUserC.text,
+      'username': usernameC.text,
+      'password': passwordC.text,
+    });
+    print(responseRegister.body);
+    var dataRegister = json.decode(responseRegister.body);
+    if (dataRegister == "Success") {
+      Fluttertoast.showToast(
+          msg: "Register Success",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.green,
+          textColor: Colors.white);
+      Get.toNamed('/login');
+    } else {
+      Fluttertoast.showToast(
+          msg: "Username sudah terdaftar",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          backgroundColor: Colors.red,
+          textColor: Colors.white);
+    }
+  }
+
   @override
   void dispose() {
     Get.delete<RegisterController>();
@@ -38,7 +76,7 @@ class _registerState extends State<register> {
 
   Widget build(BuildContext context) {
     RegisterController signUp = Get.put(RegisterController());
-    ConnectApi logindata = Get.put(ConnectApi());
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
@@ -59,19 +97,19 @@ class _registerState extends State<register> {
             Column(
               children: [
                 UsernameTextField(
-                  controller: signUp.usernameC,
+                  controller: usernameC,
                 ),
                 const SizedBox(height: 16),
                 NoTelpUserTextField(
-                  controller: signUp.noTelpUserC,
+                  controller: noTelpUserC,
                 ),
                 const SizedBox(height: 16),
                 PasswordTextFieldNoObscure(
-                  controller: signUp.passwordC,
+                  controller: passwordC,
                 ),
                 const SizedBox(height: 16),
                 ConfirmTextField(
-                  controller: signUp.password2C,
+                  controller: password2C,
                 ),
               ],
             ),
@@ -81,25 +119,24 @@ class _registerState extends State<register> {
               height: 56,
               child: ElevatedButton(
                 onPressed: () {
-                  if (signUp.usernameC.text.isEmpty) {
-                    Get.snackbar("Error", "Username tidak boleh kosong");
-                  } else if (signUp.noTelpUserC.text.isEmpty) {
-                    Get.snackbar("Error", "Nomer Telepon tidak boleh kosong");
-                  } else if (signUp.passwordC.text.isEmpty) {
-                    Get.snackbar("Error", "Password tidak boleh kosong");
-                  } else if (signUp.password2C.text.isEmpty) {
-                    Get.snackbar(
-                        "Error", "Konfirmasi Password tidak boleh kosong");
-                  } else if (signUp.passwordC.text != signUp.password2C.text) {
-                    Get.snackbar("Error", "Password tidak sama");
-                  } else if (signUp.passwordC.text.isEmpty &&
-                      signUp.password2C.text.isEmpty &&
-                      signUp.usernameC.text.isEmpty &&
-                      signUp.noTelpUserC.text.isEmpty) {
-                    Get.snackbar("Error", "data tidak boleh kosong");
-                  } else {
-                    logindata.register();
-                  }
+                  // if (usernameC.text.isEmpty) {
+                  //   Get.snackbar("Error", "Username tidak boleh kosong");
+                  // } else if (signUp.noTelpUserC.text.isEmpty) {
+                  //   Get.snackbar("Error", "Nomer Telepon tidak boleh kosong");
+                  // } else if (signUp.passwordC.text.isEmpty) {
+                  //   Get.snackbar("Error", "Password tidak boleh kosong");
+                  // } else if (signUp.password2C.text.isEmpty) {
+                  //   Get.snackbar(
+                  //       "Error", "Konfirmasi Password tidak boleh kosong");
+                  // } else if (signUp.passwordC.text != signUp.password2C.text) {
+                  //   Get.snackbar("Error", "Password tidak sama");
+                  // } else if (signUp.passwordC.text.isEmpty &&
+                  //     signUp.password2C.text.isEmpty &&
+                  //     signUp.usernameC.text.isEmpty &&
+                  //     signUp.noTelpUserC.text.isEmpty) {
+                  //   Get.snackbar("Error", "data tidak boleh kosong");
+                  // } else {
+                  _register();
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: PrimaryBlue,

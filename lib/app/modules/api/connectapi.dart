@@ -16,38 +16,38 @@ class ConnectApi {
   LoginController authController = Get.put(LoginController());
   RegisterController signUp = Get.put(RegisterController());
 
-  Future register() async {
-    try {
-      var url1 = Uri.parse(API.signUp);
-      final responseRegister = await http.post(url1, body: {
-        'id_user': signUp.idUserC.text,
-        'no_telp_user': signUp.noTelpUserC.text,
-        'username': signUp.usernameC.text,
-        'password': signUp.passwordC.text,
-      });
-      print(responseRegister.body);
-      var dataRegister = json.decode(responseRegister.body);
-      if (dataRegister == "Success") {
-        signUp.idUserC.clear();
-        signUp.noTelpUserC.clear();
-        signUp.usernameC.clear();
-        signUp.passwordC.clear();
-        Get.snackbar(
-          "Success",
-          "Register Success",
-          duration: Duration(seconds: 1),
-        );
-        Get.toNamed('/login');
-      } else {
-        Get.snackbar(
-          "Error",
-          "Username sudah terdaftar",
-          duration: Duration(seconds: 1),
-        );
-      }
-    } catch (e) {}
-  }
-}
+//   Future register() async {
+//     try {
+//       var url1 = Uri.parse(API.signUp);
+//       final responseRegister = await http.post(url1, body: {
+//         'id_user': signUp.idUserC.text,
+//         'no_telp_user': signUp.noTelpUserC.text,
+//         'username': signUp.usernameC.text,
+//         'password': signUp.passwordC.text,
+//       });
+//       print(responseRegister.body);
+//       var dataRegister = json.decode(responseRegister.body);
+//       if (dataRegister == "Success") {
+//         signUp.idUserC.clear();
+//         signUp.noTelpUserC.clear();
+//         signUp.usernameC.clear();
+//         signUp.passwordC.clear();
+//         Get.snackbar(
+//           "Success",
+//           "Register Success",
+//           duration: Duration(seconds: 1),
+//         );
+//         Get.toNamed('/login');
+//       } else {
+//         Get.snackbar(
+//           "Error",
+//           "Username sudah terdaftar",
+//           duration: Duration(seconds: 1),
+//         );
+//       }
+//     } catch (e) {}
+//   }
+// }
 
 // class ApiPickUp {
 //   PickupController pickUp = Get.put(PickupController());
@@ -103,3 +103,4 @@ class ConnectApi {
 //     } catch (e) {}
 //   }
 // }
+}

@@ -45,8 +45,10 @@ class _splashScreenState extends State<splashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              child: Image(image: AssetImage('assets/logo/logo.png')),
-            ),
+                child: Image.asset(
+              'assets/logo/logo2.jpg',
+              scale: 0.1,
+            )),
             SizedBox(
               height: 20,
             ),
@@ -57,7 +59,7 @@ class _splashScreenState extends State<splashScreen> {
                     TextSpan(
                       text: "Tosepatu",
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 20,
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.bold,
                         color: Colors.blue,
