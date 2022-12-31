@@ -31,12 +31,12 @@ class PesananView extends GetView<PesananController> {
         centerTitle: true,
         backgroundColor: Colors.white,
       ),
-      body: Center(
-        child: Text(
-          'PesananView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+//       body: Center(
+//         child: Text(
+//           'PesananView is working',
+//           style: TextStyle(fontSize: 20),
+//         ),
+//       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           boxShadow: <BoxShadow>[

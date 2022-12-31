@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../themes/colors_theme.dart';
+import '../../../../themes/colors_theme.dart';
 
-class ConfirmTextField extends StatefulWidget {
-  const ConfirmTextField({super.key});
+class AlamatCodTextFields extends StatefulWidget {
+  final TextEditingController? controller;
+  final double? height;
+  const AlamatCodTextFields({this.controller, this.height});
 
   @override
-  State<ConfirmTextField> createState() => _ConfirmTextFieldState();
+  State<AlamatCodTextFields> createState() => _AlamatCodTextFieldsState();
 }
 
-class _ConfirmTextFieldState extends State<ConfirmTextField> {
+class _AlamatCodTextFieldsState extends State<AlamatCodTextFields> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,10 +22,11 @@ class _ConfirmTextFieldState extends State<ConfirmTextField> {
           height: 50,
           child: Center(
             child: TextFormField(
+              controller: widget.controller,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: PrimaryGrey,
-                hintText: 'Konfirmasi Kata Sandi',
+                hintText: 'Alamat Ketemuan',
                 enabled: true,
                 contentPadding:
                     const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),
@@ -31,8 +34,8 @@ class _ConfirmTextFieldState extends State<ConfirmTextField> {
                   borderSide: new BorderSide(color: PrimaryBlue),
                   borderRadius: new BorderRadius.circular(8),
                 ),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: new BorderSide(color: StrokeGrey),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: new BorderSide(color: StrokeGrey2),
                   borderRadius: new BorderRadius.circular(8),
                 ),
               ),

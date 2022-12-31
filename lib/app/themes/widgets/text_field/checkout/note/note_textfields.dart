@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../../../themes/colors_theme.dart';
 
 class CatatanTextFields extends StatefulWidget {
-  const CatatanTextFields({super.key});
+  final TextEditingController? controller;
+  final double? height;
+  const CatatanTextFields({this.controller, this.height});
 
   @override
   State<CatatanTextFields> createState() => _CatatanTextFieldsState();
@@ -19,6 +21,7 @@ class _CatatanTextFieldsState extends State<CatatanTextFields> {
           width: 343,
           height: 87,
           child: TextFormField(
+            controller: widget.controller,
             minLines:
                 10, // any number you need (It works as the rows for the textarea)
             keyboardType: TextInputType.multiline,

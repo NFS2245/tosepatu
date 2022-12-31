@@ -14,6 +14,7 @@ class HomeView extends GetView<HomeController> {
   final VoidCallback? signOut;
   HomeView({Key? key, this.signOut}) : super(key: key);
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,17 +31,17 @@ class HomeView extends GetView<HomeController> {
             style: FontsThemes.titlePage.copyWith(color: Colors.black)
             // GoogleFonts.inter(fontSize: 20, fontWeight: FontWeight.w600),
             ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: IconButton(
-              onPressed: () {
-                Get.toNamed("/notif");
-              },
-              icon: Icon(Icons.notifications),
-            ),
-          ),
-        ],
+        // actions: [
+        //   Padding(
+        //     padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+        //     child: IconButton(
+        //       onPressed: () {
+        //         Get.toNamed("/notif");
+        //       },
+        //       icon: Icon(Icons.notifications),
+        //     ),
+        //   ),
+        // ],
         centerTitle: true,
         // leading: Padding(
         //   padding: const EdgeInsets.only(left: 10),
@@ -54,19 +55,19 @@ class HomeView extends GetView<HomeController> {
         // ),
         backgroundColor: Colors.white,
       ),
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Center(
           child: Column(
             children: [
-              SizedBox(height: 18),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
               Container(
-                height: 141,
+                height: MediaQuery.of(context).size.height * 0.18,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   // borderRadius: BorderRadius.circular(0),
                 ),
               ),
-              SizedBox(height: 10),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -248,7 +249,7 @@ class HomeView extends GetView<HomeController> {
               ),
               Column(
                 children: [
-                  SizedBox(height: 110),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.14),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                     child: Container(
@@ -256,7 +257,7 @@ class HomeView extends GetView<HomeController> {
                       height: 56,
                       child: ElevatedButton(
                         onPressed: () {
-                          Get.toNamed("/checkout");
+                          Get.toNamed("/checkoutselect");
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: PrimaryBlue,

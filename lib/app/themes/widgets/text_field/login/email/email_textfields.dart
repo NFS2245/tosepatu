@@ -26,7 +26,7 @@ class _EmailTextFieldsState extends State<EmailTextFields> {
               decoration: InputDecoration(
                 filled: true,
                 fillColor: PrimaryGrey,
-                hintText: 'Email',
+                hintText: 'Username',
                 enabled: true,
                 contentPadding:
                     const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),

@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../themes/colors_theme.dart';
+import '../../../../themes/colors_theme.dart';
 
-class UsernameTextField extends StatefulWidget {
-  const UsernameTextField({super.key});
+class NoTelpUserTextField extends StatefulWidget {
+  final TextEditingController? controller;
+  final double? height;
+  const NoTelpUserTextField({this.controller, this.height});
 
   @override
-  State<UsernameTextField> createState() => _UsernameTextFieldState();
+  State<NoTelpUserTextField> createState() => _NoTelpUserTextFieldState();
 }
 
-class _UsernameTextFieldState extends State<UsernameTextField> {
+class _NoTelpUserTextFieldState extends State<NoTelpUserTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,10 +22,11 @@ class _UsernameTextFieldState extends State<UsernameTextField> {
           height: 50,
           child: Center(
             child: TextFormField(
+              controller: widget.controller,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: PrimaryGrey,
-                hintText: 'Username',
+                hintText: 'No Telepon',
                 enabled: true,
                 contentPadding:
                     const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),

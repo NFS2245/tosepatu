@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../../../themes/colors_theme.dart';
 
 class NoTeleponTextFields extends StatefulWidget {
-  const NoTeleponTextFields({super.key});
+  final TextEditingController? controller;
+  final double? height;
+  const NoTeleponTextFields({this.controller, this.height});
 
   @override
   State<NoTeleponTextFields> createState() => _NoTeleponTextFieldsState();
@@ -20,6 +22,7 @@ class _NoTeleponTextFieldsState extends State<NoTeleponTextFields> {
           height: 50,
           child: Center(
             child: TextFormField(
+              controller: widget.controller,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: PrimaryGrey,

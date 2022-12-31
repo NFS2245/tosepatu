@@ -33,6 +33,12 @@ class _CheckItemCountState extends State<CheckItemCount> {
 
   @override
   Widget build(BuildContext context) {
+    @override
+    void dispose() {
+      Get.delete<CountController>();
+      super.dispose();
+    }
+
     return Row(
       children: [
         SizedBox(
@@ -82,6 +88,12 @@ class CheckItemCount2 extends StatefulWidget {
 }
 
 class _CheckItemCount2State extends State<CheckItemCount2> {
+  @override
+  void dispose() {
+    Get.delete<CountController>();
+    super.dispose();
+  }
+
   final CountController c = Get.put(CountController());
   int up = 0;
   @override

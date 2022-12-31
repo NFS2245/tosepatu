@@ -40,7 +40,7 @@ class _loginState extends State<login> {
   Future loginData() async {
     var url = Uri.parse(API.signIn);
     var responseLogin = await http.post(url, body: {
-      'email': authController.emailC.text.toString(),
+      'username': authController.usernameC.text.toString(),
       'password': authController.passwordC.text,
     });
     UserData userData = UserData.fromMap(jsonDecode(responseLogin.body));
@@ -48,14 +48,14 @@ class _loginState extends State<login> {
     String status = map['status'];
 
     if (status == "Success") {
-      String id_akun = userData.data![0].idAkun;
+      String id_user = userData.data![0].idUser;
+      String no_telp_user = userData.data![0].noTelpUser;
       String username = userData.data![0].username;
-      String email = userData.data![0].email;
       setState(() {
         _loginstatus = loginstatus.signIn;
-        savpref(status, id_akun, username, email);
+        savpref(status, id_user, no_telp_user, username);
       });
-      authController.emailC.clear();
+      authController.usernameC.clear();
       authController.passwordC.clear();
       Get.snackbar(
         "Success",
@@ -66,7 +66,7 @@ class _loginState extends State<login> {
     } else {
       Get.snackbar(
         "Error",
-        "Masukkan NIS dan Password yang benar",
+        "Masukkan Username dan Password yang benar",
         duration: Duration(seconds: 1),
       );
     }
@@ -74,17 +74,17 @@ class _loginState extends State<login> {
 
   savpref(
     String status,
-    String idAkun,
+    String idUser,
+    String noTelpUser,
     String username,
-    String email,
   ) async {
     print('dipanggil');
     SharedPreferences pref = await SharedPreferences.getInstance();
     setState(() {
       pref.setString('status', status);
-      pref.setString('id_akun', idAkun);
+      pref.setString('id_user', idUser);
+      pref.setString('no_telp_user', noTelpUser);
       pref.setString('username', username);
-      pref.setString('email', email);
     });
   }
 
@@ -155,7 +155,7 @@ class _loginState extends State<login> {
                 Column(
                   children: [
                     EmailTextFields(
-                      controller: authController.emailC,
+                      controller: authController.usernameC,
                     ),
                     const SizedBox(height: 16),
                     PasswordTextFields(
@@ -167,12 +167,12 @@ class _loginState extends State<login> {
                       height: 56,
                       child: ElevatedButton(
                         onPressed: () {
-                          if (authController.emailC.text.isEmpty) {
+                          if (authController.usernameC.text.isEmpty) {
                             Get.snackbar("Error", "Email tidak boleh kosong");
                           } else if (authController.passwordC.text.isEmpty) {
                             Get.snackbar(
                                 "Error", "Password tidak boleh kosong");
-                          } else if (authController.emailC.text.isEmpty &&
+                          } else if (authController.usernameC.text.isEmpty &&
                               authController.passwordC.text.isEmpty) {
                             Get.snackbar("Error",
                                 "Email dan Password tidak boleh kosong");

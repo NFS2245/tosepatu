@@ -97,4 +97,8 @@ class FontsThemes {
     fontSize: 25,
     fontWeight: FontWeight.w700,
   );
+  static TextStyle detailSelectCheckout = GoogleFonts.inter(
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+  );
 }

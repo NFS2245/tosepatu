@@ -5,13 +5,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends GetxController {
   //TODO: Implement LoginController
-  late TextEditingController emailC;
+  late TextEditingController usernameC;
   late TextEditingController passwordC;
 
   @override
   void onInit() {
     super.onInit();
-    emailC = TextEditingController();
+    usernameC = TextEditingController();
     passwordC = TextEditingController();
   }
 
@@ -23,7 +23,7 @@ class LoginController extends GetxController {
   @override
   void onClose() {
     super.onClose();
-    emailC = TextEditingController();
+    usernameC = TextEditingController();
     passwordC = TextEditingController();
   }
 }

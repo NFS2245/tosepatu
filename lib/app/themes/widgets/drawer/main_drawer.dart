@@ -20,12 +20,14 @@ class _MainDrawerState extends State<MainDrawer> {
   }
 
   String? username = '';
-  String? email = '';
+  String? no_telp_user = '';
+  String? id_user = '';
   getPref() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       username = preferences.getString("username");
-      email = preferences.getString("email");
+      no_telp_user = preferences.getString("no_telp_user");
+      id_user = preferences.getString("id_user");
     });
   }
 
@@ -68,7 +70,8 @@ class _MainDrawerState extends State<MainDrawer> {
                 ),
               ),
               accountName: Text("$username", style: FontsThemes.drawerTextBig),
-              accountEmail: Text("$email", style: FontsThemes.drawerTextSmall),
+              accountEmail:
+                  Text("$id_user", style: FontsThemes.drawerTextSmall),
             ),
             Column(
               children: [
@@ -76,65 +79,70 @@ class _MainDrawerState extends State<MainDrawer> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text("Jadwal Tosepatu"),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.05,
-                    ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
                       child: Icon(Icons.access_time_filled),
                     ),
-                    Text("Senin, Selasa : 17.00 - 21.00"),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+                      child: Text("Senin, Selasa : 17.00 - 21.00"),
+                    ),
                   ],
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.05,
-                    ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
                       child: Icon(Icons.access_time_filled),
                     ),
-                    Text("Rabu, Kamis : 12.00 - 21.00"),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 20, 0),
+                      child: Text("Rabu, Kamis : 12.00 - 21.00"),
+                    ),
                   ],
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.05,
-                    ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
                       child: Icon(Icons.access_time_filled),
                     ),
-                    Text("Jumat : 09.00 - 18.00"),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 20, 0),
+                      child: Text("Jumat : 09.00 - 18.00"),
+                    ),
                   ],
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.05,
-                    ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
                       child: Icon(Icons.access_time_filled),
                     ),
-                    Text("Sabtu : 09.00 - 21.00"),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 20, 0),
+                      child: Text("Sabtu : 09.00 - 21.00"),
+                    ),
                   ],
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.05,
-                    ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.fromLTRB(20, 10, 0, 0),
                       child: Icon(Icons.access_time_filled),
                     ),
-                    Text("Minggu : 09.00 - 18.00"),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 20, 0),
+                      child: Text("Minggu : 09.00 - 18.00"),
+                    ),
                   ],
                 ),
               ],

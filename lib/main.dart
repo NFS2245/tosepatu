@@ -13,7 +13,7 @@ void main() async {
       Get.put(MainPageController(), permanent: true);
   runApp(
     GetMaterialApp(
-      title: "Application",
+      debugShowCheckedModeBanner: false,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
     ),
