@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../../../themes/colors_theme.dart';
 
@@ -22,6 +23,10 @@ class _AlamatTextFieldsState extends State<AlamatTextFields> {
           height: 50,
           child: Center(
             child: TextFormField(
+              inputFormatters: [
+                LengthLimitingTextInputFormatter(50),
+              ],
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: widget.controller,
               decoration: InputDecoration(
                 filled: true,

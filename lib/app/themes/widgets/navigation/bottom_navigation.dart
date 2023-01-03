@@ -36,8 +36,8 @@ class MainBottomNavigation extends StatelessWidget {
               label: "Riwayat",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: "Akun",
+              icon: Icon(Icons.headset_mic_rounded),
+              label: "Bantuan",
             ),
           ],
         ));

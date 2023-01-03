@@ -26,7 +26,7 @@ class _splashScreenState extends State<splashScreen> {
   fungsion() {
     var duration = Duration(seconds: 3);
     return Timer(duration, () {
-      Get.offAll(LoginView());
+      Get.offAll(() => LoginView());
     });
   }
 
@@ -47,7 +47,7 @@ class _splashScreenState extends State<splashScreen> {
             Container(
                 child: Image.asset(
               'assets/logo/logo2.jpg',
-              scale: 0.1,
+              scale: 10,
             )),
             SizedBox(
               height: 20,

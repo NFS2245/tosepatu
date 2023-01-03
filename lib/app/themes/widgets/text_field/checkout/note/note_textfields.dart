@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../../../themes/colors_theme.dart';
 
@@ -21,6 +22,9 @@ class _CatatanTextFieldsState extends State<CatatanTextFields> {
           width: 343,
           height: 87,
           child: TextFormField(
+            inputFormatters: [
+              LengthLimitingTextInputFormatter(100),
+            ],
             controller: widget.controller,
             minLines:
                 10, // any number you need (It works as the rows for the textarea)

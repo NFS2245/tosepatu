@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tosepatu/app/themes/widgets/drawer_container_akun/container_akun.dart';
 
+import '../../../../routes/app_pages.dart';
 import '../../../../themes/themes/colors_theme.dart';
 import '../../../../themes/themes/font_themes.dart';
 import '../../../../themes/widgets/drawer/main_drawer.dart';
@@ -93,49 +94,76 @@ class AkunView extends GetView<AkunController> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  margin: EdgeInsets.fromLTRB(15, 10, 0, 0),
-                  child: Text(
-                    "Akun",
-                    textAlign: TextAlign.start,
-                    style: FontsThemes.akunText.copyWith(color: Colors.black),
+                // Container(
+                //   margin: EdgeInsets.fromLTRB(15, 10, 0, 0),
+                //   child: Text(
+                //     "Akun",
+                //     textAlign: TextAlign.start,
+                //     style: FontsThemes.akunText.copyWith(color: Colors.black),
+                //   ),
+                // ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Get.offNamed(Routes.NOTIF);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
+                        child: Text(
+                          "FaQ",
+                          textAlign: TextAlign.start,
+                          style: FontsThemes.akunChange
+                              .copyWith(color: Colors.black),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
+                      child: Icon(Icons.keyboard_arrow_left),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Get.offNamed(Routes.TENTANG_APLIKASI);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
+                        child: Text(
+                          "Tentang Aplikasi",
+                          textAlign: TextAlign.start,
+                          style: FontsThemes.akunChange
+                              .copyWith(color: Colors.black),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
+                      child: Icon(Icons.keyboard_arrow_left),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 30),
+                Center(
+                  child: OutlinedButton.icon(
+                    onPressed: () {
+                      controller.intentWhatsappAsk();
+                    },
+                    icon: Icon(Icons.phone),
+                    label: Text("Chat Admin Untuk Bertanya"),
+                    style: OutlinedButton.styleFrom(
+                      backgroundColor: Color(0xFF25D366),
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(15, 20, 0, 0),
-                      child: Text(
-                        "Ganti Email",
-                        textAlign: TextAlign.start,
-                        style: FontsThemes.akunChange
-                            .copyWith(color: Colors.black),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
-                      child: Icon(Icons.keyboard_arrow_left),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(15, 20, 0, 0),
-                      child: Text(
-                        "Ganti Password",
-                        textAlign: TextAlign.start,
-                        style: FontsThemes.akunChange
-                            .copyWith(color: Colors.black),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
-                      child: Icon(Icons.keyboard_arrow_left),
-                    ),
-                  ],
                 ),
               ],
             )

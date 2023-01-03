@@ -39,26 +39,28 @@ class Data {
   Data({
     required this.idUser,
     required this.noTelpUser,
-    required this.username,
-    required this.password,
+    required this.usernameUser,
+    required this.passwordUser,
   });
 
   final String idUser;
   final String noTelpUser;
-  final String username;
-  final String password;
+  final String usernameUser;
+  final String passwordUser;
 
   factory Data.fromMap(Map<String, dynamic> json) => Data(
         idUser: json["id_user"] == null ? null : json["id_user"],
         noTelpUser: json["no_telp_user"] == null ? null : json["no_telp_user"],
-        username: json["username"] == null ? null : json["username"],
-        password: json["password"] == null ? null : json["password"],
+        usernameUser:
+            json["username_user"] == null ? null : json["username_user"],
+        passwordUser:
+            json["password_user"] == null ? null : json["password_user"],
       );
 
   Map<String, dynamic> toMap() => {
         "id_user": idUser == null ? null : idUser,
         "no_telp_user": noTelpUser == null ? null : noTelpUser,
-        "username": username == null ? null : username,
-        "password": password == null ? null : password,
+        "username_user": usernameUser == null ? null : usernameUser,
+        "password_user": passwordUser == null ? null : passwordUser,
       };
 }

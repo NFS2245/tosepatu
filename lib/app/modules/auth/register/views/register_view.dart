@@ -45,8 +45,8 @@ class _registerState extends State<register> {
     Uri url1 = Uri.parse(API.signUp);
     final responseRegister = await http.post(url1, body: {
       'no_telp_user': noTelpUserC.text,
-      'username': usernameC.text,
-      'password': passwordC.text,
+      'username_user': usernameC.text,
+      'password_user': passwordC.text,
     });
     print(responseRegister.body);
     var dataRegister = json.decode(responseRegister.body);
@@ -119,24 +119,25 @@ class _registerState extends State<register> {
               height: 56,
               child: ElevatedButton(
                 onPressed: () {
-                  // if (usernameC.text.isEmpty) {
-                  //   Get.snackbar("Error", "Username tidak boleh kosong");
-                  // } else if (signUp.noTelpUserC.text.isEmpty) {
-                  //   Get.snackbar("Error", "Nomer Telepon tidak boleh kosong");
-                  // } else if (signUp.passwordC.text.isEmpty) {
-                  //   Get.snackbar("Error", "Password tidak boleh kosong");
-                  // } else if (signUp.password2C.text.isEmpty) {
-                  //   Get.snackbar(
-                  //       "Error", "Konfirmasi Password tidak boleh kosong");
-                  // } else if (signUp.passwordC.text != signUp.password2C.text) {
-                  //   Get.snackbar("Error", "Password tidak sama");
-                  // } else if (signUp.passwordC.text.isEmpty &&
-                  //     signUp.password2C.text.isEmpty &&
-                  //     signUp.usernameC.text.isEmpty &&
-                  //     signUp.noTelpUserC.text.isEmpty) {
-                  //   Get.snackbar("Error", "data tidak boleh kosong");
-                  // } else {
-                  _register();
+                  if (usernameC.text.isEmpty) {
+                    Get.snackbar("Error", "Username tidak boleh kosong");
+                  } else if (noTelpUserC.text.isEmpty) {
+                    Get.snackbar("Error", "Nomer Telepon tidak boleh kosong");
+                  } else if (passwordC.text.isEmpty) {
+                    Get.snackbar("Error", "Password tidak boleh kosong");
+                  } else if (password2C.text.isEmpty) {
+                    Get.snackbar(
+                        "Error", "Konfirmasi Password tidak boleh kosong");
+                  } else if (passwordC.text != password2C.text) {
+                    Get.snackbar("Error", "Password tidak sama");
+                  } else if (passwordC.text.isEmpty &&
+                      password2C.text.isEmpty &&
+                      usernameC.text.isEmpty &&
+                      noTelpUserC.text.isEmpty) {
+                    Get.snackbar("Error", "data tidak boleh kosong");
+                  } else {
+                    _register();
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: PrimaryBlue,

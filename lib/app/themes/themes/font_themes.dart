@@ -71,7 +71,7 @@ class FontsThemes {
   );
   static TextStyle akunTextName = GoogleFonts.inter(
     fontSize: 24,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w800,
   );
   static TextStyle akunTextEmail = GoogleFonts.inter(
     fontSize: 16,

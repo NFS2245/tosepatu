@@ -300,7 +300,21 @@ class _CODState extends State<COD> {
                 height: 56,
                 child: ElevatedButton(
                   onPressed: () {
-                    cod();
+                    if (namaC.text.isEmpty) {
+                      Get.snackbar("Error", "Nama tidak boleh kosong");
+                    } else if (noTelpC.text.isEmpty) {
+                      Get.snackbar("Error", "No Telepon tidak boleh kosong");
+                    } else if (alamatC.text.isEmpty) {
+                      Get.snackbar("Error", "alamat tidak boleh kosong");
+                    } else if (c.sumtotal == 0) {
+                      Get.snackbar("Error", "pesanan tidak boleh kosong");
+                    } else if (namaC.text.isEmpty &&
+                        noTelpC.text.isEmpty &&
+                        alamatC.text.isEmpty) {
+                      Get.snackbar("Error", "Data tidak boleh kosong");
+                    } else {
+                      cod();
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: PrimaryBlue,

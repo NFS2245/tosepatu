@@ -11,12 +11,12 @@ class akun extends StatefulWidget {
 }
 
 class _akunState extends State<akun> {
-  String? username = '';
+  String? username_user = '';
   String? no_telp_user = '';
   getPref() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
-      username = preferences.getString("username");
+      username_user = preferences.getString("username");
       no_telp_user = preferences.getString("no_telp_user");
     });
   }
@@ -63,7 +63,7 @@ class _akunState extends State<akun> {
                     margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                     width: double.infinity,
                     child: Text(
-                      '$username',
+                      '$username_user',
                       style: FontsThemes.akunTextName
                           .copyWith(color: Colors.white),
                       textAlign: TextAlign.start,

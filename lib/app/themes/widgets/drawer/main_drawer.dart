@@ -19,13 +19,13 @@ class _MainDrawerState extends State<MainDrawer> {
     });
   }
 
-  String? username = '';
+  String? username_user = '';
   String? no_telp_user = '';
   String? id_user = '';
   getPref() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
-      username = preferences.getString("username");
+      username_user = preferences.getString("username_user");
       no_telp_user = preferences.getString("no_telp_user");
       id_user = preferences.getString("id_user");
     });
@@ -69,7 +69,8 @@ class _MainDrawerState extends State<MainDrawer> {
                   stops: <double>[0, 1, 1],
                 ),
               ),
-              accountName: Text("$username", style: FontsThemes.drawerTextBig),
+              accountName:
+                  Text("$username_user", style: FontsThemes.drawerTextBig),
               accountEmail:
                   Text("$id_user", style: FontsThemes.drawerTextSmall),
             ),

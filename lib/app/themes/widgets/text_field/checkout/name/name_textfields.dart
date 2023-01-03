@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../../../themes/colors_theme.dart';
 
@@ -22,7 +23,18 @@ class _NamaTextFieldsState extends State<NamaTextFields> {
           height: 50,
           child: Center(
             child: TextFormField(
+              inputFormatters: [
+                LengthLimitingTextInputFormatter(20),
+              ],
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: widget.controller,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "Masukan Jumlah yang benar";
+                } else {
+                  return null;
+                }
+              },
               decoration: InputDecoration(
                 filled: true,
                 fillColor: PrimaryGrey,

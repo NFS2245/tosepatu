@@ -10,9 +10,16 @@ import '../../../../themes/themes/font_themes.dart';
 import '../../../../themes/widgets/item_count/checkout_itemcount.dart/item_count.dart';
 import '../controllers/home_controller.dart';
 
-class HomeView extends GetView<HomeController> {
+class HomeView extends StatefulWidget {
   final VoidCallback? signOut;
   HomeView({Key? key, this.signOut}) : super(key: key);
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  HomeController homeController = Get.put(HomeController());
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -21,7 +28,7 @@ class HomeView extends GetView<HomeController> {
       key: scaffoldKey,
       drawer: MainDrawer(
         signOut: () {
-          signOut!();
+          widget.signOut!();
         },
       ),
       backgroundColor: FillGrey,
@@ -60,11 +67,18 @@ class HomeView extends GetView<HomeController> {
           child: Column(
             children: [
               SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-              Container(
-                height: MediaQuery.of(context).size.height * 0.18,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  // borderRadius: BorderRadius.circular(0),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.18,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    image: DecorationImage(
+                        image: AssetImage('assets/cover/Cover.png'),
+                        fit: BoxFit.fill),
+                    // borderRadius: BorderRadius.circular(0),
+                  ),
+                  // color: Colors.white,
                 ),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.01),
@@ -107,7 +121,7 @@ class HomeView extends GetView<HomeController> {
                                           EdgeInsets.fromLTRB(19, 0, 19, 10),
                                       width: double.infinity,
                                       child: Text(
-                                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+                                        "Layanan Pencucian Sepatu Secara Menyeluruh.",
                                         style: FontsThemes.detailText2,
                                         textAlign: TextAlign.start,
                                       ),
@@ -121,6 +135,9 @@ class HomeView extends GetView<HomeController> {
                         height: 262,
                         width: 155,
                         decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage('assets/logo/logo.png'),
+                                alignment: Alignment.topCenter),
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: [
@@ -194,7 +211,7 @@ class HomeView extends GetView<HomeController> {
                                           EdgeInsets.fromLTRB(19, 0, 19, 10),
                                       width: double.infinity,
                                       child: Text(
-                                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+                                        "Layanan Pencucian Sepatu Secara Menyeluruh, Khusus Sepatu Putih. ",
                                         style: FontsThemes.detailText2,
                                         textAlign: TextAlign.start,
                                       ),
@@ -208,6 +225,9 @@ class HomeView extends GetView<HomeController> {
                         height: 262,
                         width: 155,
                         decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage('assets/logo/logo.png'),
+                                alignment: Alignment.topCenter),
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10),
                             boxShadow: [

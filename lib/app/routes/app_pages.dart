@@ -4,10 +4,12 @@ import '../modules/auth/login/bindings/login_binding.dart';
 import '../modules/auth/login/views/login_view.dart';
 import '../modules/auth/register/bindings/register_binding.dart';
 import '../modules/auth/register/views/register_view.dart';
-import '../modules/checkout/dropoff/bindings/delivery_binding.dart';
-import '../modules/checkout/dropoff/views/delivery_view.dart';
 import '../modules/checkout/cod/bindings/checkout_binding.dart';
 import '../modules/checkout/cod/views/checkout_view.dart';
+import '../modules/checkout/dropoff/bindings/delivery_binding.dart';
+import '../modules/checkout/dropoff/views/delivery_view.dart';
+import '../modules/checkout/pickup/bindings/pickup_binding.dart';
+import '../modules/checkout/pickup/views/pickup_view.dart';
 import '../modules/checkoutselect/bindings/checkoutselect_binding.dart';
 import '../modules/checkoutselect/views/checkoutselect_view.dart';
 import '../modules/main_page/akun/bindings/akun_binding.dart';
@@ -20,9 +22,9 @@ import '../modules/main_page/riwayat/bindings/riwayat_binding.dart';
 import '../modules/main_page/riwayat/views/riwayat_view.dart';
 import '../modules/notif/bindings/notif_binding.dart';
 import '../modules/notif/views/notif_view.dart';
-import '../modules/checkout/pickup/bindings/pickup_binding.dart';
-import '../modules/checkout/pickup/views/pickup_view.dart';
 import '../modules/splashscreen/views/splash_screen_view.dart';
+import '../modules/tentangAplikasi/bindings/tentang_aplikasi_binding.dart';
+import '../modules/tentangAplikasi/views/tentang_aplikasi_view.dart';
 
 part 'app_routes.dart';
 
@@ -49,17 +51,17 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PESANAN,
-      page: () => const PesananView(),
+      page: () => PesananView(),
       binding: PesananBinding(),
     ),
     GetPage(
       name: _Paths.RIWAYAT,
-      page: () => const RiwayatView(),
+      page: () => RiwayatView(),
       binding: RiwayatBinding(),
     ),
     GetPage(
       name: _Paths.AKUN,
-      page: () => const AkunView(),
+      page: () => AkunView(),
       binding: AkunBinding(),
     ),
     GetPage(
@@ -90,6 +92,11 @@ class AppPages {
     GetPage(
       name: _Paths.SPLASH_SCREEN,
       page: () => SplashScreenView(),
+    ),
+    GetPage(
+      name: _Paths.TENTANG_APLIKASI,
+      page: () => const TentangAplikasiView(),
+      binding: TentangAplikasiBinding(),
     ),
   ];
 }

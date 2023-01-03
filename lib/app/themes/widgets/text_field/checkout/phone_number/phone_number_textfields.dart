@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
 import '../../../../themes/colors_theme.dart';
 
 class NoTeleponTextFields extends StatefulWidget {
@@ -22,6 +22,10 @@ class _NoTeleponTextFieldsState extends State<NoTeleponTextFields> {
           height: 50,
           child: Center(
             child: TextFormField(
+              inputFormatters: [
+                LengthLimitingTextInputFormatter(13),
+              ],
+              keyboardType: TextInputType.number,
               controller: widget.controller,
               decoration: InputDecoration(
                 filled: true,

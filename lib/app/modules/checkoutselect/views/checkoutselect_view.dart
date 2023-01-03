@@ -14,7 +14,7 @@ class CheckoutselectView extends GetView<CheckoutselectController> {
     return Scaffold(
       backgroundColor: FillGrey,
       appBar: AppBar(
-        title: Text('Pilih Pengiriman',
+        title: Text('Metode Pengambilan',
             style: FontsThemes.titlePage.copyWith(color: Colors.black)),
         leading: Padding(
             padding: const EdgeInsets.only(left: 10),
@@ -65,7 +65,7 @@ class CheckoutselectView extends GetView<CheckoutselectController> {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(10, 10, 0, 10),
                           child: Text(
-                            "Lorem Ipsum",
+                            "Kurir mengambil sepatu pada alamat yang disepakati",
                             style: FontsThemes.itemPrice,
                           ),
                         ),
@@ -107,7 +107,7 @@ class CheckoutselectView extends GetView<CheckoutselectController> {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(10, 10, 0, 10),
                           child: Text(
-                            "Lorem Ipsum",
+                            "Pelanggan Mengirimkan langsung ke alamat Tosepatu",
                             style: FontsThemes.itemPrice,
                           ),
                         ),
@@ -149,7 +149,7 @@ class CheckoutselectView extends GetView<CheckoutselectController> {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(10, 10, 0, 10),
                           child: Text(
-                            "Lorem Ipsum",
+                            "Kurir mengambil sepatu pada alamat pelanggan",
                             style: FontsThemes.itemPrice,
                           ),
                         ),

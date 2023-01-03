@@ -1,17 +1,65 @@
 import 'package:flutter/material.dart';
-
+import 'dart:convert';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tosepatu/app/themes/themes/colors_theme.dart';
 
 import '../../../../themes/themes/font_themes.dart';
 import '../../../../themes/widgets/drawer/main_drawer.dart';
 import '../../../../themes/widgets/navigation/bottom_navigation.dart';
+import '../../../api/api.dart';
+import '../../../models/indexRiwayat.dart';
 import '../controllers/riwayat_controller.dart';
+import 'package:http/http.dart' as http;
 
 class RiwayatView extends GetView<RiwayatController> {
-  const RiwayatView({Key? key}) : super(key: key);
+  Widget build(BuildContext context) {
+    return riwayat();
+  }
+}
+
+class riwayat extends StatefulWidget {
+  const riwayat({super.key});
+  @override
+  State<riwayat> createState() => _riwayatState();
+}
+
+class _riwayatState extends State<riwayat> {
+  // List<DataRiwayat>? lisPending;
+  List lisPending = [];
+  String? id_user = '';
+  getPref() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      id_user = preferences.getString("id_user");
+    });
+  }
+
+  Future<void> getDataRiwayat() async {
+    Uri url = Uri.parse(API.riwayat);
+    final response = await http.post(url, body: {"id_user": '$id_user'});
+    if (this.mounted) {
+      setState(() {
+        lisPending = json
+            .decode(response.body)
+            .map((item) => DataRiwayat.fromJson(item))
+            .toList()
+            .cast<DataRiwayat>();
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getDataRiwayat();
+    getPref();
+  }
+
   @override
   Widget build(BuildContext context) {
+    getDataRiwayat();
+
     return Scaffold(
       drawer: MainDrawer(),
       backgroundColor: FillGrey,
@@ -19,23 +67,12 @@ class RiwayatView extends GetView<RiwayatController> {
         iconTheme: IconThemeData(color: Colors.black),
         title: Text('Riwayat',
             style: FontsThemes.titlePage.copyWith(color: Colors.black)),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: IconButton(
-              onPressed: () {
-                Get.toNamed("/notif");
-              },
-              icon: Icon(Icons.notifications),
-            ),
-          ),
-        ],
         centerTitle: true,
         backgroundColor: Colors.white,
       ),
       body: SafeArea(
         child: ListView.builder(
-          itemCount: 30,
+          itemCount: lisPending.length,
           padding: EdgeInsets.only(
             top: 16,
             bottom: 100,
@@ -66,23 +103,23 @@ class RiwayatView extends GetView<RiwayatController> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Deep Clean",
+                              "${lisPending[index].alamat}",
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 95),
-                              child: Text("x1"),
-                            ),
-                            Text("Rp 10000"),
+                            // Padding(
+                            //   padding: const EdgeInsets.only(left: 95),
+                            //   child: Text("list"),
+                            // ),
+                            // Text("Rp 10000"),
                           ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Deep Clean + Sepatu Putih",
+                              "${lisPending[index].catatan}",
                             ),
-                            Text("x1"),
-                            Text("Rp 15000"),
+                            // Text("x1"),
+                            // Text("Rp 15000"),
                           ],
                         ),
                         Divider(
@@ -92,10 +129,10 @@ class RiwayatView extends GetView<RiwayatController> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Nama",
+                              "${lisPending[index].namaPengiriman}",
                             ),
                             Text(
-                              "Rp 25000",
+                              "Rp ${lisPending[index].grandTotal}",
                             ),
                           ],
                         ),
@@ -104,10 +141,10 @@ class RiwayatView extends GetView<RiwayatController> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              "Selasa, 32 September 2069",
+                              "${lisPending[index].tanggalMasuk}",
                             ),
                             Text(
-                              "Kode Pesanan",
+                              "${lisPending[index].idPesanan}",
                             ),
                           ],
                         ),

@@ -15,6 +15,7 @@ abstract class Routes {
   static const CHECKOUTSELECT = _Paths.CHECKOUTSELECT;
   static const DELIVERY = _Paths.DELIVERY;
   static const PICKUP = _Paths.PICKUP;
+  static const TENTANG_APLIKASI = _Paths.TENTANG_APLIKASI;
 }
 
 abstract class _Paths {
@@ -31,4 +32,5 @@ abstract class _Paths {
   static const CHECKOUTSELECT = '/checkoutselect';
   static const DELIVERY = '/delivery';
   static const PICKUP = '/pickup';
+  static const TENTANG_APLIKASI = '/tentang-aplikasi';
 }

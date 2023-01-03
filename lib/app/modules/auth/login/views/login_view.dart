@@ -40,8 +40,8 @@ class _loginState extends State<login> {
   Future loginData() async {
     var url = Uri.parse(API.signIn);
     var responseLogin = await http.post(url, body: {
-      'username': authController.usernameC.text.toString(),
-      'password': authController.passwordC.text,
+      'username_user': authController.usernameC.text.toString(),
+      'password_user': authController.passwordC.text,
     });
     UserData userData = UserData.fromMap(jsonDecode(responseLogin.body));
     Map<String, dynamic> map = jsonDecode(responseLogin.body);
@@ -50,7 +50,7 @@ class _loginState extends State<login> {
     if (status == "Success") {
       String id_user = userData.data![0].idUser;
       String no_telp_user = userData.data![0].noTelpUser;
-      String username = userData.data![0].username;
+      String username = userData.data![0].usernameUser;
       setState(() {
         _loginstatus = loginstatus.signIn;
         savpref(status, id_user, no_telp_user, username);
@@ -76,7 +76,7 @@ class _loginState extends State<login> {
     String status,
     String idUser,
     String noTelpUser,
-    String username,
+    String usernameUser,
   ) async {
     print('dipanggil');
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -84,7 +84,7 @@ class _loginState extends State<login> {
       pref.setString('status', status);
       pref.setString('id_user', idUser);
       pref.setString('no_telp_user', noTelpUser);
-      pref.setString('username', username);
+      pref.setString('username_user', usernameUser);
     });
   }
 
@@ -196,7 +196,7 @@ class _loginState extends State<login> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Lupa Sandi",
+                        Text("",
                             style: FontsThemes.buttonTextStyle
                                 .copyWith(color: PrimaryBlue))
                       ],
