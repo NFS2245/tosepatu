@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../../../themes/colors_theme.dart';
 
 class AlamatTextFields extends StatefulWidget {
-  const AlamatTextFields({super.key});
+  final TextEditingController? controller;
+  final double? height;
+  const AlamatTextFields({this.controller, this.height});
 
   @override
   State<AlamatTextFields> createState() => _AlamatTextFieldsState();
@@ -20,6 +22,7 @@ class _AlamatTextFieldsState extends State<AlamatTextFields> {
           height: 50,
           child: Center(
             child: TextFormField(
+              controller: widget.controller,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: PrimaryGrey,

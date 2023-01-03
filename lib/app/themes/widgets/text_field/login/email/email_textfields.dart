@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../../../themes/colors_theme.dart';
 
 class EmailTextFields extends StatefulWidget {
-  const EmailTextFields({super.key});
+  final double? height;
+  final TextEditingController? controller;
+  const EmailTextFields({required this.controller, this.height});
 
   @override
   State<EmailTextFields> createState() => _EmailTextFieldsState();
@@ -20,10 +22,11 @@ class _EmailTextFieldsState extends State<EmailTextFields> {
           height: 50,
           child: Center(
             child: TextFormField(
+              controller: widget.controller,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: PrimaryGrey,
-                hintText: 'Email',
+                hintText: 'Username',
                 enabled: true,
                 contentPadding:
                     const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),

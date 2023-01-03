@@ -33,7 +33,6 @@ class FontsThemes {
     fontSize: 13,
     fontWeight: FontWeight.w600,
   );
-
   static TextStyle bottomText = GoogleFonts.poppins(
     fontSize: 15,
     fontWeight: FontWeight.w600,
@@ -69,5 +68,37 @@ class FontsThemes {
   static TextStyle riwayatText = GoogleFonts.inter(
     fontSize: 13,
     fontWeight: FontWeight.w500,
+  );
+  static TextStyle akunTextName = GoogleFonts.inter(
+    fontSize: 24,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle akunTextEmail = GoogleFonts.inter(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle akunText = GoogleFonts.inter(
+    fontSize: 17,
+    fontWeight: FontWeight.w700,
+  );
+  static TextStyle akunChange = GoogleFonts.inter(
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle detailText1 = GoogleFonts.inter(
+    fontSize: 32,
+    fontWeight: FontWeight.w700,
+  );
+  static TextStyle detailText2 = GoogleFonts.inter(
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle detailText3 = GoogleFonts.inter(
+    fontSize: 25,
+    fontWeight: FontWeight.w700,
+  );
+  static TextStyle detailSelectCheckout = GoogleFonts.inter(
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
   );
 }

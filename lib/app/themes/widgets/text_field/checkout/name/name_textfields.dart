@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../../../themes/colors_theme.dart';
 
 class NamaTextFields extends StatefulWidget {
-  const NamaTextFields({super.key});
+  final TextEditingController? controller;
+  final double? height;
+  const NamaTextFields({this.controller, this.height});
 
   @override
   State<NamaTextFields> createState() => _NamaTextFieldsState();
@@ -20,6 +22,7 @@ class _NamaTextFieldsState extends State<NamaTextFields> {
           height: 50,
           child: Center(
             child: TextFormField(
+              controller: widget.controller,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: PrimaryGrey,
