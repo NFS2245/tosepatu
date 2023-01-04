@@ -16,7 +16,7 @@ class _akunState extends State<akun> {
   getPref() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
-      username_user = preferences.getString("username");
+      username_user = preferences.getString("username_user");
       no_telp_user = preferences.getString("no_telp_user");
     });
   }

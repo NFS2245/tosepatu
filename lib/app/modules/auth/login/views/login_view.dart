@@ -168,14 +168,15 @@ class _loginState extends State<login> {
                       child: ElevatedButton(
                         onPressed: () {
                           if (authController.usernameC.text.isEmpty) {
-                            Get.snackbar("Error", "Email tidak boleh kosong");
+                            Get.snackbar(
+                                "Error", "Username tidak boleh kosong");
                           } else if (authController.passwordC.text.isEmpty) {
                             Get.snackbar(
                                 "Error", "Password tidak boleh kosong");
                           } else if (authController.usernameC.text.isEmpty &&
                               authController.passwordC.text.isEmpty) {
                             Get.snackbar("Error",
-                                "Email dan Password tidak boleh kosong");
+                                "Username dan Password tidak boleh kosong");
                           } else {
                             loginData();
                           }

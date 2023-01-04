@@ -21,7 +21,7 @@ class AkunView extends GetView<AkunController> {
       backgroundColor: FillGrey,
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
-        title: Text('Akun',
+        title: Text('Bantuan',
             style: FontsThemes.titlePage.copyWith(color: Colors.black)),
         // actions: [
         //   Padding(
@@ -30,7 +30,7 @@ class AkunView extends GetView<AkunController> {
         //       onPressed: () {
         //         Get.toNamed("/notif");
         //       },
-        //       icon: Icon(Icons.notifications),
+        //       icon: Icon(Icons.notificatio ns),
         //     ),
         //   ),
         // ],
@@ -119,10 +119,15 @@ class AkunView extends GetView<AkunController> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
-                      child: Icon(Icons.keyboard_arrow_left),
-                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.offNamed(Routes.NOTIF);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
+                        child: Icon(Icons.keyboard_arrow_left),
+                      ),
+                    )
                   ],
                 ),
                 Row(
@@ -142,9 +147,14 @@ class AkunView extends GetView<AkunController> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
-                      child: Icon(Icons.keyboard_arrow_left),
+                    GestureDetector(
+                      onTap: () {
+                        Get.offNamed(Routes.NOTIF);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
+                        child: Icon(Icons.keyboard_arrow_left),
+                      ),
                     ),
                   ],
                 ),

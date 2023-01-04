@@ -11,6 +11,6 @@ class API {
   static const riwayatPending = "$koneksi/riwayatpending.php";
   static const riwayatProses = "$koneksi/riwayatproses.php";
   static const riwayatFinish = "$koneksi/riwayatselesai.php";
-  static const riwayatDibatalkan = "$koneksi/riwayatcancel.php";
+  static const riwayatDibatalkan = "$koneksi/riwayatCancel.php";
   static const riwayat = "$koneksi/riwayat.php";
 }
